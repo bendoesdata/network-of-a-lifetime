@@ -1,0 +1,771 @@
+
+/** { border: 1px solid black; }*/
+
+/* Default styles for Desktop view (anything over 1000px) */
+html body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+
+}
+
+#content{
+            overflow-x: hidden;
+            margin-bottom: -10px;
+}
+
+/* Share buttons */
+ul.share-buttons{
+  list-style: none;
+}
+
+ul.share-buttons li{
+  display: inline-block;
+  padding: 3px;
+}
+
+ul.share-buttons li img{
+  height: 35px;
+  width: 35px;
+}
+
+body p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.25em;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+h1 {
+color: black;
+}
+
+h2 {
+  font-family: 'Nixie One', cursive;
+    font-size: 1.8em;
+    line-height: 1.4;
+}
+
+div.uk-active {
+  width: 100%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+uk-active {
+  width: 300px;
+}
+
+
+
+
+/* mobile screens */
+@media (min-width: 320px) and (max-width: 767px) {
+  .main-content {
+    max-width: 960px;
+    margin: auto;
+  }
+
+  .article-container {
+    max-width: 400px;
+    padding-right: 20px;
+    margin: auto;
+  }
+
+  div.graphics {
+    max-width: 650px;
+    display: inline-block;
+  }
+
+  /* this resizes the charts and images in .graphics-div to make sure they work on mobile */
+  div.uk-sticky-placeholder {
+    max-width: 100%;
+    margin: auto;
+  }
+
+}
+
+/*  small tablet screens */
+@media (min-width: 768px) {
+  .main-content {
+    max-width: 1199px;
+    margin: auto;
+  }
+
+  .article-container {
+    max-width: 550px;
+    padding-right: 20px;
+  }
+
+  div.graphics {
+    width: 450px;
+  }
+
+  div.uk-sticky-placeholder {
+    margin: auto;
+  }
+
+}
+
+/*  big tablet screens */
+@media (min-width: 989px) {
+  .main-content {
+    max-width: 1199px;
+    margin: auto;
+  }
+
+  .article-container {
+    max-width: 550px;
+    padding-right: 20px;
+    margin-left: 2%;
+  }
+
+  div.uk-width-large-8-12 {
+    width: 600px;
+  }
+  div.graphics {
+    width: 600px;
+    margin-left: 10%
+  }
+
+  div.uk-sticky-placeholder {
+    margin: auto;
+  }
+
+
+}
+
+/* desktop screens */
+@media (min-width: 1280px) {
+  .main-content {
+    max-width: 100%;
+    margin: auto;
+    margin-bottom: 50px;
+  }
+
+  .article-container {
+    width: 750px;
+    padding-right: 20px;
+    margin-left: 50px;
+  }
+
+  div.graphics {
+    max-width: 600px;
+    margin-left: 10%;
+  }
+
+  div.uk-sticky-placeholder {
+    margin: auto;
+  }
+
+  div.uk-width-large-8-12 {
+    max-width: 800px;
+  }
+}
+
+
+#sticky-width {
+  width: 100%;
+}
+
+
+#tm-hero {
+  background-image: url('images/header.png');
+}
+.icon-container {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.section-icon {
+  width: 50px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*highlight text to open glossary box*/
+.open-glossary {
+  background-color: none;
+}
+
+.open-glossary::after {
+  background-color: none;
+  content: url('notebook2.png');
+  height: 5px;
+  display: inline-block;
+  position: relative;
+  background-size: 10px 1px;
+}
+
+#glossary-button {
+  position: fixed;
+  bottom:0;
+  right:0;
+  margin-right: 30px;
+  margin-bottom: 20px;
+  color: white;
+  width: 100px;
+  height: 30px;
+  background-color: #30627e;
+}
+
+#glossary {
+  color: white;
+}
+
+.glossary-box {
+  margin: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
+
+/*highlight text to open context box*/
+.readmore-context {
+  background-color: rgba(168, 218, 224, 0.3);
+}
+
+.readmore-context::before {
+  background-color: rgba(168, 218, 224, 0.2);
+  content: url('newspaper7.png');
+  height: 5px;
+  display: inline-block;
+  position: relative;
+  background-size: 10px 1px;
+}
+/*Styling for context box*/
+.context-box {
+  color: white;
+  margin: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.context-box p {
+  font-size: 1.05em;
+}
+
+.context-box h2 {
+  color: white;
+}
+
+.context-box h3 {
+  font-family: 'Nixie One', serif;
+  color: white;
+}
+
+.context-box a {
+  color: #A8DAE0;
+}
+
+.uk-navbar {
+  background-color: rgba(289, 289, 289, 0.7);
+  font-family: 'Lato', sans-serif;
+  z-index: 50;
+}
+
+div.uk-sticky-placeholder {
+  height: 20px;
+  z-index: 50;
+}
+
+/*media queries for mobile nav bar*/
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-nav {
+    display: show;
+  }
+}
+
+@media (min-width: 769px) {
+  .desktop-nav {
+    display: show;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+}
+
+#mobile-nav {
+    color: white;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#mobile-nav a {
+    color: white;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+blockquote {
+background: url("quotation-marks-left.png") no-repeat;
+background-size: 40px 30px;
+border-left: 1px dashed #ccc;
+color: #343436;
+font-family: "Nixie One";
+margin: 30px;
+padding: 10px 10px 30px 50px;
+font-size: 1.2em;
+line-height: 1.4;
+}
+
+blockquote img {
+float: right;
+width: 40px;
+height: 30px;
+margin-top: 5px;
+}
+
+span.first-letter {
+    font-size: 75px;
+    font-weight: bold;
+    padding: none;
+    float: left;
+    line-height: 55px;
+    padding-top: 4px;
+    padding-right: 20px;
+    padding-left: 3px;
+}
+
+.data-source {
+  font-size: 10px;
+  color: rgba(163, 163, 163, 0.9);
+}
+
+.data-source a {
+  font-size: 10px;
+  color: rgba(163, 163, 163, 0.9);
+  text-decoration: underline;
+}
+
+.map-source {
+  font-size: 12px;
+  float: left;
+  position: absolute;
+  bottom: 0px;
+  background-color: white;
+}
+
+@media (max-width: 500px) {
+.header-source {
+  font-size: 4px;
+  float: left;
+  position: absolute;
+  bottom: 0px;
+  color: white;
+}
+}
+
+.header-source {
+  font-size: 8px;
+  float: left;
+  position: absolute;
+  bottom: 0px;
+  color: white;
+}
+
+.timeline time {
+  font-family: "Nixie One", serif;
+  display: inline;
+  font-size: 20px;
+}
+
+.timeline p {
+  font-family: "Lato", sans-serif;
+  font-size: 1.05em;
+}
+
+.timeline h3 {
+  font-family: "Nixie One", serif;
+  display: inline;
+  font-size: 20px;
+}
+
+.photo-cred {
+  font-size: 10px;
+  font-family: "Lato", sans-serif;
+  margin-top: -10px;
+  padding-top: -10px;
+  display: inline;
+
+}
+
+#scenario-container {
+    height:     30px;
+    width:      95%;
+    position:   fixed;
+    background: #f4f4f4;
+}
+
+#progress-scenario {
+    position:    relative;
+    height:      100%;
+    width:       0%;
+    background:  red;
+}
+
+/*background full width parallax img*/
+
+    /*full width maps on mobile*/
+@media (max-width: 767px) {
+  #bg_one {
+      background-image: url('MN4.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: 20%;
+      background-size: 700px auto;
+  }
+
+  #bg_two {
+      background-image: url('LA-02.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: 70% 75%;
+      background-size: 500px auto;
+  }
+
+  #bg_three {
+      background-image: url('VA-02.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: 80% 75%;
+      background-size: 700px auto;
+  }
+}
+
+/*full width maps default*/
+#bg_one {
+    background-image: url('MN4.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /*background-position: 20% 75%;*/
+}
+
+#bg_two {
+    background-image: url('LA-02.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 80% 45%;
+}
+
+#bg_three {
+    background-image: url('VA-02.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* C3 styling */
+.c3-axis-x, .c3-axis-y {
+  fill:rgba(163, 163, 163, 0.9);
+  stroke: solid;
+  stroke-width: 0.5;
+  font-size: 10.5px;
+  font-family: "PT Sans", sans-serif;
+}
+
+.c3-chart-arcs-title {
+  font-family: 'Nixie One', serif;
+  font-size: 1.2em;
+  width: 20px;
+  content: url('Laptop-icon-07.png')
+}
+
+.c3-legend-item g {
+  margin-top: 50px;
+}
+
+.annotate {
+  position: absolute;
+  margin-top: 30%;
+  margin-left: 40%;
+  z-index: 1;
+  font-size: 13px;
+  font-family: "PT Sans", sans-serif;
+  display: block;
+  color: white;
+}
+
+.hover-for-values {
+  font-size: 13px;
+  font-family: "PT Sans", sans-serif;
+  display: inline;
+  float: right;
+    color: rgba(63, 63, 63, 0.9);
+}
+
+.hover-for-values2 {
+  font-size: 13px;
+  font-family: "PT Sans", sans-serif;
+  max-width: 1000px;
+  margin: auto
+    color: rgba(163, 163, 163, 0.5);
+}
+
+/*  css media queries for scatter plot annotations */
+/*  mobile screen 1 */
+@media (min-width: 320px) {
+  .scatter-annotate {
+    position: absolute;
+    margin-top: 1%;
+    margin-left: 57%;
+    z-index: 1;
+    font-size: 12px;
+    font-family: "PT Sans", sans-serif;
+  }
+
+  .scatter-annotate-arrow {
+    position: absolute;
+    margin-top: 8.5%;
+    margin-left: 31%;
+    z-index: 1;
+    font-size: 14px;
+    font-family: "PT Sans", sans-serif;
+  }
+}
+
+/*  mobile screen 2 */
+@media (min-width: 450px) {
+  .scatter-annotate {
+    position: absolute;
+    margin-top: 8%;
+    margin-left: 52%;
+    z-index: 1;
+    font-size: 13px;
+    font-family: "PT Sans", sans-serif;
+  }
+
+  .scatter-annotate-arrow {
+    position: absolute;
+    margin-top: 8.5%;
+    margin-left: 31%;
+    z-index: 1;
+    font-size: 14px;
+    font-family: "PT Sans", sans-serif;
+  }
+}
+
+/*  mobile screen 3 */
+@media (min-width: 550px) {
+  .scatter-annotate {
+    position: absolute;
+    margin-top: 11%;
+    margin-left: 48%;
+    z-index: 1;
+    font-size: 13px;
+    font-family: "PT Sans", sans-serif;
+  }
+
+  .scatter-annotate-arrow {
+    position: absolute;
+    margin-top: 8.5%;
+    margin-left: 31%;
+    z-index: 1;
+    font-size: 14px;
+    font-family: "PT Sans", sans-serif;
+  }
+}
+
+/*  mobile screen 4 */
+@media (min-width: 650px) {
+  .scatter-annotate {
+    position: absolute;
+    margin-top: 13%;
+    margin-left: 46%;
+    z-index: 1;
+    font-size: 13px;
+    font-family: "PT Sans", sans-serif;
+  }
+
+  .scatter-annotate-arrow {
+    position: absolute;
+    margin-top: 8.5%;
+    margin-left: 32%;
+    z-index: 1;
+    font-size: 14px;
+    font-family: "PT Sans", sans-serif;
+  }
+}
+
+/*  small tablet screens */
+@media (min-width: 768px) {
+  .scatter-annotate {
+    position: absolute;
+    margin-top: 12%;
+    margin-left: 44%;
+    z-index: 1;
+    font-size: 13px;
+    font-family: "PT Sans", sans-serif;
+  }
+
+  .scatter-annotate-arrow {
+    position: absolute;
+    margin-top: 8.5%;
+    margin-left: 32%;
+    z-index: 1;
+    font-size: 14px;
+    font-family: "PT Sans", sans-serif;
+  }
+}
+
+/*  big tablet screens */
+@media (min-width: 989px) {
+  .scatter-annotate {
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 45%;
+    z-index: 1;
+    font-size: 14px;
+    font-family: "PT Sans", sans-serif;
+  }
+
+  .scatter-annotate-arrow {
+    position: absolute;
+    margin-top: 8.5%;
+    margin-left: 34%;
+    z-index: 1;
+    font-size: 14px;
+    font-family: "PT Sans", sans-serif;
+  }
+}
+
+
+/* desktop screens */
+@media (min-width: 1280px) {
+  .scatter-annotate {
+    position: absolute;
+    margin-top: 8%;
+    margin-left: 47%;
+    z-index: 1;
+    font-size: 14px;
+    font-family: "PT Sans", sans-serif;
+  }
+
+  .scatter-annotate-arrow {
+    position: absolute;
+    margin-top: 6.5%;
+    margin-left: 38%;
+    z-index: 1;
+  }
+}
+
+
+#scatter2 {
+  height: auto;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.name
+{
+    float:right;
+    color:#27aae1;
+}
+
+.axis
+{
+    fill: none;
+    stroke: #AAA;
+    stroke-width: 1px;
+}
+
+#scatter2 text
+{
+    stroke: none;
+    fill: #666666;
+    font-size: 0.8em;
+    font-family:"PT Sans", sans-serif;
+    padding: 5px;
+}
+
+.label
+{
+    fill: #414241;
+}
+
+.node
+{
+    cursor:pointer;
+}
+
+.dot
+{
+    opacity: .7;
+    cursor: pointer;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 2px;
+    font: 14px;
+    font-family: "PT Sans";
+    background: rgba(234,234,234,0.4);
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.c3-tooltip {
+  color: black;
+  font-family: "PT Sans";
+  background-color: rgba(234,234,234,0.8);
+}
+
+.c3-tooltip td {
+  color: black;
+  font-family: "PT Sans";
+
+}
+
+footer {
+  background-color: #777777;
+  width: 100%;
+  color: white;
+  height: auto;
+}
+
+footer .uk-container {
+  margin-bottom: 20px;
+}
+
+footer p {
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  text-align: center;
+}
+
+footer h2 {
+  color: white;
+  font-size: 1.4em;
+  text-align: center;
+}
+
+footer a {
+  color: white;
+}
+
+footer li {
+  display: inline;
+}
+
+.table {
+	display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+}

@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>The Network of a Lifetime</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Load jQuery -->
+
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300|Nixie+One" rel="stylesheet">
+    <link href="js/c3/c3.css" />
+    <!-- Load Uikit file -->
+    <script type="text/javascript" src="js/jquery-3.0.0.js"></script>
+    <link type="text/css" rel="stylesheet" href="js/uikit-2.27.2/css/uikit.almost-flat.min.css" />
+    <link type="text/css" rel="stylesheet" href="js/uikit-2.27.2/css/components/slideshow.almost-flat.min.css" />
+    <link type="text/css" rel="stylesheet" href="js/uikit-2.27.2/css/components/sticky.almost-flat.min.css" />
+    <script type="text/javascript" src="js/uikit-2.27.2/js/uikit.min.js"></script>
+    <script type="text/javascript" src="js/uikit-2.27.2/js/components/slideshow.min.js"></script>
+    <script type="text/javascript" src="js/uikit-2.27.2/js/components/sticky.min.js"></script>
+
+    <!-- load JS sheets -->
+    <script src="js/d3/d3.min.js"></script>
+    <script src="js/c3/c3.min.js"></script>
+    <script src="js/ScrollMagic.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/1.18.0/d3-annotation.js"></script>
+
+
+
+    <!-- Load custom css styling -->
+    <link rel="stylesheet" href="uikit/uikit.almost-flat.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/timeline.css" />
+
+
+
+
+
+
+
+</head>
+<style>
+    #tm-hero {
+        background-image: url('images/header-v2-01.png');
+    }
+
+    #scrollbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        width: 0%;
+        height: 5px;
+        z-index: 9999;
+    }
+
+    #scrollbar-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #004e8e;
+    }
+</style>
+
+<body>
+    <div id="content">
+
+
+    <!-- Jumbotron Header -->
+    <div id="tm-hero" class="tm-hero uk-block uk-block-large uk-cover-background uk-flex uk-flex-middle uk-height-viewport uk-contrast">
+        <div class="uk-container uk-container-center">
+            <div class="uk-width-medium-1-1">
+                <div class="uk-text-center">
+                    <br />
+                    <br />
+                    <h1 style="font-size: 3.8em; margin-top: 90px; margin-bottom: -80px; line-height: 1.3; color: white; font-family: 'Nixie One'" class="uk-heading-large uk-margin-large-bottom"><span style="color: #A8DAE0">The Net</span>work of a Lifetime</h1><br class="uk-hidden-small">
+                    <img style="width: 100px; margin-bottom: -50px; margin-top: -60px" src="images/Spinner.svg" />
+                    <h2 style="font-size: 1.6em; max-width: 700px; margin-bottom: 50px; margin-top: 35px; color: white">Net neutrality regulations are changing in America. Here's why that matters.  </h2>
+                    <a class="" id="scroll-to-start" style="margin-top: 0px; background-color: none; color: black"><img style="width: 100px; margin-top: -30px" src="images/icons/cloud-computing2.svg" /></a>
+                    <p style="color: white; margin-top: 15px; font-style: italic; font-family: 'Nixie One'; font-size: 12px">
+                        Words and code by Benjamin Cooley
+                        <br />
+                        14.07.2017
+                    </p>
+
+                </div>
+                <p class="header-source">
+                  Image by <a href="https://commons.wikimedia.org/w/index.php?curid=1538544">The Opte Project</a> - Originally from the English Wikipedia, CC BY 2.5
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <!-- This is the button toggling the Glossary off-canvas sidebar -->
+        <!-- <button id="glossary-button" class="uk-button uk-button-primary" type="button" data-uk-offcanvas="{target:'#glossary', mode:'slide'}">
+    Glossary
+  </button> -->
+
+        <!-- This is the Glossary off-canvas sidebar to the right -->
+        <!-- <div id="glossary" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar uk-offcanvas-bar-flip glossary-box">
+                <ul class="uk-nav uk-nav-offcanvas-flip" data-uk-nav>
+                    <h2>Glossary of terms</h2>
+                    <ul>
+                        <p>
+
+                            <em style="color: white">ISP Servers- defined defined defined defined defined defined</em> </p>
+                    </ul>
+                    <br />
+                    <ul>
+                        <p>Term - defined defined defined defined defined defined</p>
+                    </ul>
+                    <ul>
+                        Term - defined defined defined defined defined defined
+                    </ul>
+                    <ul>
+                        Term - defined defined defined defined defined defined
+                    </ul>
+                </ul>
+            </div>
+        </div> -->
+
+        <!-- This is a left side off-canvas bar for more context behind certain links -->
+        <!-- <div id="test-context" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar context-box">
+                <br />
+                <h2>ISP Servers</h2>
+                <p>
+                    more content goes here. more content goes here. more content goes here.more content goes here
+                </p>
+            </div>
+        </div> -->
+
+        <div id="FCC-comments-context" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar context-box">
+                <br />
+                <h2>FCC Net Neutrality Debate of 2015</h2>
+                <p>
+                    The Open Internet Order passed in the summer of 2015 by a 3-2 vote.
+                    Leading up to the vote, the FCC held an open comment period on it's website. The website received so many public comments that the FCC's servers crasehd, and the website went down.
+                    This was partly due to the traffic caused by John Oliver's sketch that spurred a strong call to action. The Open Internet Order enshrined net neutrality regulations in law for the first time.
+                </p>
+                <h3>Further reading</h3>
+                <ul>
+                  <li>
+                    <p>
+
+                    <a target="_blank" href="http://www.npr.org/sections/alltechconsidered/2014/09/17/349243335/3-7-million-comments-later-heres-where-net-neutrality-stands">3.7 Million Comments Later, Here's Where Net Neutrality Stands</a> - NPR</p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://www.washingtonpost.com/news/morning-mix/wp/2014/06/04/john-olivers-net-neutrality-rant-may-have-caused-fcc-site-crash/?utm_term=.2263a41dadf1">John Oliver’s net neutrality rant may have caused FCC site crash</a> - Washington Post
+                    </p>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="Pai-context" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar context-box">
+                <br />
+                <h2>Ajit Pai's Transition from Big Telecom to FCC</h2>
+                <p>
+                    Ajit Pai has served as a commissioner on the FCC for the past three years. He was elevated to status of chairman by President Trump.
+                    Pai is an attoreny by trade, and worked on Verizon's general counsel for two years. His anti-regulatory approach to government is popular with large telecom and internet companies.
+                </p>
+                <h3>Further reading</h3>
+                <ul>
+                  <li>
+                    <p>
+                    <a target="_blank" href="https://www.nytimes.com/2017/02/05/technology/trumps-fcc-quickly-targets-net-neutrality-rules.html?_r=0">Trump’s F.C.C. Pick Quickly Targets Net Neutrality Rules</a> - New York Times
+                  </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://motherboard.vice.com/en_us/article/wnz8ey/big-telecom-is-ecstatic-about-trumps-new-fcc-boss-ajit-pai">Big Telecom is Ecstatic About Trump's New FCC Boss Ajit Pai</a> - Motherboard
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://www.theguardian.com/technology/2017/jul/12/ajit-pai-fcc-net-neutrality-open-internet">Ajit Pai: the man who could destroy the open internet</a> - The Guardian
+                    </p>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div id="realm-context" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar context-box">
+                <br />
+                <h2>Net Neutrality Does Not Make the Internet a Public Utility</h2>
+                <p>
+                    After the 2015 decision, some publishers explained the new regulations as reclassifying internet services as a public utilitie.
+                    While this can be a helpful way to think about it, it's not technically true. It's fair to say that net neutrality placed ISPs in a similar realm to public utilities, but they are still regulated very differently.
+                    The main reason why the two concepts have become conflated is that ISPs are now under Title II regulations from the Communications Act of 1934 along with other public utility companies.
+                    This topic (which is covered at length in this story) is harder to explain than simply relating internet regulation to public utilities.
+
+                </p>
+                <h3>Further reading</h3>
+                <ul>
+                  <li>
+                    <p>
+                    <a target="_blank" href="https://medium.com/backchannel/the-historical-record-of-net-neutrality-747286cbde62">The FCC Did NOT Make the Internet a Public Utility</a> - Backchannel
+                                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://en.wikipedia.org/wiki/Communications_Act_of_1934">Communications Act of 1934</a> - Wikipedia
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://www.dailydot.com/layer8/what-is-title-ii-net-neutrality-fcc/">Title II is the key to net neutrality—so what is it?</a> - The Daily Dot
+                    </p>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="bell-context" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar context-box">
+                <br />
+                <h2>The Breakup of the Bell System</h2>
+                <p>
+                    Breaking up AT&T's monopoly in the telecommunications market was a major event in U.S. regulation history. The smaller companies formed after breaking up the Bell System (Baby Bells) went on to become major telecom and internet providers.
+                    Putting net neutrality aside, this pivotal moment set a precedent for how to regulate companies in the telecommunication and information service sectors.
+
+                </p>
+                <h3>Further reading</h3>
+                <ul>
+                  <li>
+                    <p>
+                    <a target="_blank" href="https://en.wikipedia.org/wiki/Breakup_of_the_Bell_System">Breakup of the Bell System</a> - Wikipedia
+                  </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://www.nytimes.com/interactive/2016/02/12/technology/att-history.html">AT&T’s History of Invention and Breakups</a> - New York Times
+                    </p>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="tel-act-context" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar context-box">
+                <br />
+                <h2>Telecommunications Act of 1996</h2>
+                <p>
+                    This act was the first major piece of legislation to build on the Communications Act of 1934. Before 1996, the internet was not included in telecommunication law. The act created three main service categories: Title I (Telecommunications), Title II (Broadcast) and Title II (Cable).
+
+
+                </p>
+                <h3>Further reading</h3>
+                <ul>
+                  <li>
+                    <p>
+                    <a target="_blank" href="https://en.wikipedia.org/wiki/Telecommunications_Act_of_1996">Telecommunications Act of 1996</a> - Wikipedia
+                  </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="http://thehill.com/policy/technology/268459-bill-clintons-telecom-law-twenty-years-later">Bill Clinton’s telecom law: Twenty years later</a> - The Hill
+                    </p>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="loading-context" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar context-box">
+                <br />
+                <h2>Internet Users are Impatient</h2>
+                <p>
+                    This study focused only on viewers who abandoned videos after a two second delay. But the principle applies to the web as a whole.
+                    Google subsidiary DoubleClick produced a report around mobile internet performance stating that 53% of visits to mobile sites are left after three seconds if the page fails to load.
+
+
+                </p>
+                <h3>Further reading</h3>
+                <ul>
+                  <li>
+                    <p>
+                    <a target="_blank" href="https://www.theverge.com/2012/11/11/3628530/online-video-study-no-patience-for-buffering">Study: viewers have no patience for buffering, abandon videos after two seconds of waiting</a> - The Verge
+                  </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://www.soasta.com/blog/google-mobile-web-performance-study/">Google: 53% of mobile users abandon sites that take longer than 3 seconds to load</a> - SOASTA (Akamai)
+                    </p>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="merger-context" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar context-box">
+                <br />
+                <h2>Comcast Acquisition of NBC Universal</h2>
+                <p>
+                    Comcast purchased a majority share of the media conglomerate NBC Universal in 2009. At the time, Comcast was the largest provider of cable television in America.
+                    Critics said the deal was dangerous for media ownership and consumer freedom since Comcast would now control a major content producer along with the pipes the content travels on. With most video content available online now, this same concern applies to video over the internet.
+
+
+
+                </p>
+                <h3>Further reading</h3>
+                <ul>
+                  <li>
+                    <p>
+                    <a target="_blank" href="https://en.wikipedia.org/wiki/Acquisition_of_NBC_Universal_by_Comcast">Acquisition of NBC Universal by Comcast</a> - Wikipedia
+                  </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="http://knowledge.wharton.upenn.edu/article/comcast-nbc-universal-will-the-marriage-of-cable-and-content-work/">Comcast-NBC Universal: Will the Marriage of Cable and Content Work?</a> - Wharton, University of Pennsylvania
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://www.theguardian.com/media/2011/jan/21/nbc-universal-comcast">NBC Universal and Comcast's merger is no joke</a> - The Guardian
+                    </p>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="term-context" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar context-box">
+                <br />
+                <h2>FCC Definitions of Broadband</h2>
+                <p>
+                  Defining broadband internet can be a tricky thing. Some define broadband as simply a wired internet connection over cables. But the FCC's official page has six different types of broadband, including wireless and DSL.
+                  Cable broadband has become one of the most common ways to connect to the internet in the U.S. This is because information can travel through the same coaxial cables that send pictures and sound for cable television.
+<br />
+<br />
+                  In addition to different types of "broadband", there are also different levels of qualifying speed. The FCC has continued to shift and increase this number as technology and overall internet speeds have improved. But each time they change the qualifying speeds, it also changes who officially has "broadband" and who doesn't.
+                </p>
+                <h3>Further reading</h3>
+                <ul>
+                  <li>
+                    <p>
+                    <a target="_blank" href="https://www.fcc.gov/general/types-broadband-connections">Types of Broadband Connections</a> - FCC Website
+                  </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://www.theverge.com/2015/1/29/7932653/fcc-changed-definition-broadband-25mbps">The FCC has changed the definition of broadband</a> - The Verge
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="http://www.electronicdesign.com/communications/what-s-difference-between-cable-and-dsl-broadband-access">What’s The Difference Between Cable And DSL Broadband Access?</a> - Electronic Design
+                    </p>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="foundation-context" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar context-box">
+                <br />
+                <h2>Free State Foundation has Received Large Donations from Lobbying Groups</h2>
+                <p>
+                  Two of the biggest names conributing funds to Free State Foundation are the Internet and Television Association (formerly National Cable and Television Association)
+                  and the Wireless Association (formerly Cellular Telecommunications and Internet Association). Between 2010 and 2014, these groups donated a combined $655,000. The study produced by Free State Foundation, and cited by Ajit Pai, has been criticized for selectively picking data to reinforce their claim of declining broadband investment due to Title II regulations.
+
+                </p>
+                <h3>Further reading</h3>
+                <ul>
+                  <li>
+                    <p>
+                    <a target="_blank" href="https://www.publicintegrity.org/2016/08/03/20030/search-nonprofit-network">Search the Nonprofit Network</a> - Tool showing financial contributions by The Center for Public Integrity
+                  </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://www.gizmodo.com.au/2017/04/the-worst-lies-from-the-fcc-chairmans-anti-net-neutrality-speech/">The Worst Lies From The FCC Chairman's Anti-Net Neutrality Speech</a> - Gizmodo
+                    </p>
+                  </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div id="investors-context" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar context-box">
+                <br />
+                <h2>ISPs Seem to Contradict FCC on Damage to Investment</h2>
+                <p>
+                  In their internet investment report, Free Press quoted multiple CEOs of large ISPs as reassuring investors that Title II would not affect their regulation plans. This is a direct contradiction to the claims made in the Free State Foundation report.
+<br />
+<br />
+                  Comcast’s Chief Financial Officer told investors that the company’s previous concerns were primarily based on “the  fear  of  what  Title  II  could  have  meant,  more than  what it actually  meant”.
+                  AT&T also said that Title II would not affect their business plans, and that the company would "deploy more fiber" in 2016 than 2015.
+                </p>
+                <h3>Further reading</h3>
+                <ul>
+                  <li>
+                    <p>
+                    <a target="_blank" href="https://arstechnica.com/information-technology/2017/05/title-ii-hasnt-hurt-network-investment-according-to-the-isps-themselves/">Title II hasn’t hurt network investment, according to the ISPs themselves</a> - ArsTechnica
+                  </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://www.freepress.net/sites/default/files/resources/internet-access-and-online-video-markets-are-thriving-in-title-II-era.pdf">It’s Working: How the Internet Access and Online Video Markets Are Thriving in the Title II Era</a> - Free Press
+                    </p>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="survey-context" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar context-box">
+                <br />
+                <h2>Surveys Show Overwhelming Support, but Confusion Remains on the Specifics</h2>
+                <p>
+                  The raw public survey conducted by Freedman Consulting shows a bipartisan support for keeping the net neutrality rules that are currently in place.
+                  73% of Republicans, 80% of Democrats and 76% of Independents said they wanted to keep the Open Internet rules set by the FCC in 2015.
+<br />
+<br />
+                  A survey from the NCTA, a large cable lobbying group, agrees that most Americans support net neutrality regulation. But their questions were different: their results show 53% of Americans support "light-tough" regulation on internet companies. At the current FCC, this means doing away with Title II regulations, they key component of net neutrality set out by the Open Internet Order.
+                </p>
+                <h3>Further reading</h3>
+                <ul>
+                  <li>
+                    <p>
+                    <a target="_blank" href="https://motherboard.vice.com/en_us/article/7x9kyg/most-americans-support-the-net-neutrality-rules-that-trumps-fcc-wants-to-kill">Most Americans Support the Net Neutrality Rules that Trump’s FCC Wants to Kill</a> - Motherboard
+                  </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://www.scribd.com/document/353285485/Freedman-Consulting-Net-Neutrality-Poll">New Poll: Americans Overwhelmingly Support Existing Net Neutrality Rules, Affordable Access, and Competition Among ISPs</a> - Freedman Consulting
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://arstechnica.co.uk/tech-policy/2017/05/cable-lobby-conducts-survey-finds-that-americans-want-net-neutrality/">Cable lobby conducts survey, finds that Americans want net neutrality</a> - ArsTechnica
+                    </p>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="net-neutrality-def" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar context-box">
+                <br />
+                <h2>Net Neutrality Defined</h2>
+                <p>
+                  Net neutrality (sometimes called network neutrality) can be a complex issue to fully understand. It's basic definition is that all ISPs should treat content equally. This means they shouldn't be allowed to block, throttle or cutoff content that they don't like.
+                  <br /><br />
+                  That's fine as a principle. But putting net neutrality into practice is more complicated. Most people agree with the principle, but disagree on how to implement it. That's where the FCC comes in, and where we start our story.
+
+
+                </p>
+                <h3>Further reading</h3>
+                <ul>
+                  <li>
+                    <p>
+                    <a target="_blank" href="https://www.recode.net/2014/5/15/11626886/net-neutrality-qa">Everything You Wanted to Know About Net Neutrality (Video)</a> - Recode
+                  </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="http://www.businessinsider.com/net-neutralityfor-dummies-and-how-it-effects-you-2014-1?IR=T">EXPLAINED: 'Net Neutrality' For Dummies, How It Affects You, And Why It Might Cost You More</a> - Business Insider
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <a target="_blank" href="https://www.vox.com/cards/network-neutrality">Network neutrality, explained</a> - Vox
+                    </p>
+                  </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <!-- Navbar -->
+
+        <nav class="uk-navbar desktop-nav" data-uk-sticky>
+
+            <div class="uk-navbar">
+
+                <ul class="uk-navbar-nav">
+                    <li><a class="scroll-back-to-start" style="font-family: 'Lato'"  >Intro</a></li>
+                    <li><a class="scroll-to-railroad-section" style="font-family: 'Lato'">Chapter 1</a></li>
+                    <li><a class="scroll-to-internet-infra-section" style="font-family: 'Lato'">Chapter 2</a></li>
+                    <li><a class="scroll-to-monopoly-section" style="font-family: 'Lato'">Chapter 3</a></li>
+                    <li><a class="scroll-to-regulation-section" style="font-family: 'Lato'">Chapter 4</a></li>
+                </ul>
+
+                <div style="display: block; ">
+
+                <ul class="share-buttons" style="float: right; padding: 5px; margin-bottom: -5px" >
+                  <p style="padding: 5px; margin-bottom: -5px; display: inline;">
+                    Share this story →
+                  </p>
+                  <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Figor.gold.ac.uk%2F~bcool001%2Fdissertation%2Findex.html&t=The%20Network%20of%20a%20Lifetime%3A%20Net%20neutrality%20is%20changing%20in%20America" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="images/icons/facebook.svg"></a></li>
+                  <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Figor.gold.ac.uk%2F~bcool001%2Fdissertation%2Findex.html&text=The%20Network%20of%20a%20Lifetime%3A%20Net%20neutrality%20is%20changing%20in%20America:%20http%3A%2F%2Figor.gold.ac.uk%2F~bcool001%2Fdissertation%2Findex.html&via=bnj_cooley" target="_blank" title="Tweet"><img alt="Tweet" src="images/icons/twitter.svg"></a></li>
+                  <li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Figor.gold.ac.uk%2F~bcool001%2Fdissertation%2Findex.html&title=The%20Network%20of%20a%20Lifetime%3A%20Net%20neutrality%20is%20changing%20in%20America" target="_blank" title="Send email"><img alt="Send email" src="images/icons/reddit.svg"></a></li>
+                </ul>
+                </div>
+                <div class="uk-navbar-content uk-navbar-flip">
+                  <!-- progress scrollbar -->
+                    <div id="scrollbar">
+                        <div id="scrollbar-bg"></div>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+<!-- mobile nav -->
+        <div class="uk-accordion mobile-nav" data-uk-accordion="{showfirst: false}" data-uk-sticky>
+    <nav class="uk-navbar">
+      <div class="display: inline; ">
+      <ul class="share-buttons" style="float: right; padding: 5px; margin-bottom: -5px" >
+        <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Figor.gold.ac.uk%2F~bcool001%2Fdissertation%2Findex.html&t=The%20Network%20of%20a%20Lifetime%3A%20Net%20neutrality%20is%20changing%20in%20America" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="images/icons/facebook.svg"></a></li>
+        <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Figor.gold.ac.uk%2F~bcool001%2Fdissertation%2Findex.html&text=The%20Network%20of%20a%20Lifetime%3A%20Net%20neutrality%20is%20changing%20in%20America:%20http%3A%2F%2Figor.gold.ac.uk%2F~bcool001%2Fdissertation%2Findex.html&via=bnj_cooley" target="_blank" title="Tweet"><img alt="Tweet" src="images/icons/twitter.svg"></a></li>
+        <li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Figor.gold.ac.uk%2F~bcool001%2Fdissertation%2Findex.html&title=The%20Network%20of%20a%20Lifetime%3A%20Net%20neutrality%20is%20changing%20in%20America" target="_blank" title="Send email"><img alt="Send email" src="images/icons/reddit.svg"></a></li>
+      </ul>
+      </div>
+        <a href="#mobile-nav" class="uk-navbar-toggle uk-accordion-title" data-uk-offcanvas id=""></a>
+    </nav>
+
+    <div class="uk-navbar uk-accordion-content">
+
+        <ul class="uk-nav">
+
+        </ul>
+    </div>
+
+</div>
+
+<!-- This is the off-canvas sidebar for  mobile nav -->
+<div id="mobile-nav" class="uk-offcanvas">
+    <div class="uk-offcanvas-bar">
+        <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+          <li>
+            <h2 style="color: white">
+              Menu
+            </h2>
+          </li>
+          <li>
+            <p>
+              <a class="scroll-back-to-start">Intro</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a class="scroll-to-railroad-section">Chapter 1</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a class="scroll-to-monopoly-section">Chapter 2</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a class="scroll-to-regulation-section">Chapter 3</a>
+            </p>
+          </li>
+        </ul>
+    </div>
+</div>
+
+
+
+        <!-- start the article text -->
+        <div class="uk-grid uk-container-center main-content" id="start-article" style="margin-top: 10px">
+            <div class="article-container uk-width-large-5-12 uk-width-medium-1-3 uk-width-small-1-1">
+                <p><span class="first-letter" data-uk-scrollspy="{repeat: true}" id="A">F</span>or the second time in three years, net neutrality has stepped out of obscurity and into the public debate. On May 18, the Federal Communications Commission (FCC) voted to start the process of repealing parts of the net neutrality regulations
+                    introduced in 2015. The official proposal, released a week later, kicked off a 90-day public comment period for people to leave feedback on the proposal at the FCC&rsquo;s website. </p>
+
+                <p>This has happened before. In 2015, it was Tom Wheeler (D) asking for public comment on how to best regulate ISPs. That time, Wheeler listened to the <a href="#FCC-comments-context" class="readmore-context" data-uk-offcanvas> 3.7 million comments</a> that were left on the FCC website.
+                </p>
+
+                <p>But now there are different players at the table. </p>
+
+                <p>At the center of the debate is Ajit Pai, Chairman of the FCC and longtime Republican. Pai is joined on the FCC by fellow Republican Mike O&rsquo;Reilly and lone Democrat Mignon Clyburn. Together, this three-person commission is in charge
+                    of deciding how to regulate (or prevent the regulation of) ISPs in America.</p>
+
+                <p>Ajit Pai was handpicked by the Trump administration for more than his Republican loyalties. Before serving as a commissioner on the FCC in 2012, Pai served as a telecommunications lawyer for Verizon. He has also been well known for his
+                    <a href="#Pai-context" class="readmore-context" data-uk-offcanvas> anti-regulatory agenda and pro-consolidation approach</a>. His appointment as FCC Chairman was widely praised by telecom giants Comcast, AT&amp;T and Verizon.</p>
+
+                <p>As Chairman, Pai laid out plans in his induction speech to take a &ldquo;weed-whacker&rdquo; to the &ldquo;set of heavy-handed regulations on the Internet&rdquo;. But on the other side of the net neutrality
+                    debate is a determined group of consumer advocacy groups, tech companies and liberal activists. The primary battle lines have been drawn between keeping net neutrality, and doing away with it. But this is more than just a policy war:
+                    it&rsquo;s a battle of semantics.</p>
+
+                    <p>Writers on both sides of the debate are constantly defining, redefining and redefining again the meaning of the term net neutrality. Both sides use terms like &ldquo;Internet freedom&rdquo; to support their cause. It is a semantic splitting
+                        of <span data-uk-scrollspy="{repeat: true}" id="B">hairs</span>, a further complication to an already technically complex issue. </p>
+
+                    <p>But at its core, the debate over net neutrality comes down to one, mysterious regulatory definition: Title II. Put simply, the Title II status placed on ISPs by the 2015 FCC decision is the only thing that gives the FCC what the industry
+                        often calls &ldquo;regulatory teeth&rdquo;. It gives the FCC power to prevent an ISP from blocking certain content, or from slowing down&#160;content loading speeds it doesn&rsquo;t particularly like. Furthermore, it places ISPs in
+                        <a href="#realm-context" class="readmore-context" data-uk-offcanvas> the same realm as other public utilities</a> like telecommunications services . </p>
+
+                    <p>As it turns out, getting to the bottom of the true implications of Title II regulation is becoming increasingly difficult.</p>
+
+
+            </div>
+
+            <!-- graphics go in this div -->
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-7-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+                <div class="graphics">
+                  <!-- Uikit slideshow on scroll -->
+
+
+                                  <div data-uk-slideshow>
+                                      <ul class="uk-slideshow">
+                                          <li>
+                                            <div class="graphics">
+                  <img src="images/savethenet.jpg" />
+                  <p style="margin-top: 5px; font-size: 14px">
+                    Protestors at a rally for net neutrality in July of 2014. <br />Photo by <a href="https://www.flickr.com/photos/freepress/14743749835">Stacie Isabella</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>.
+                  </p>
+                </div>
+                                          </li>
+                                          <li>
+                                            <div class="graphics">
+<img src="images/pai.jpg" />
+<p style=" margin-top: 5px; font-size: 14px; padding: 5px">
+Ajit Pai being sworn in as a commissioner by FCC Chairman Genachowski in 2012. <br />Photo by <a rel="nofollow" class="external text" href="https://www.flickr.com/people/44065807@N03">FCC</a> - <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/fccdotgov/7196602012/">Link</a>, Public Domain
+</p></div>
+                                          </li>
+                                      </ul>
+                                      <a id="slide_one_A" href="" data-uk-slideshow-item="0"></a>
+                                      <a id="slide_one_B" href="" data-uk-slideshow-item="1"></a>
+
+
+
+
+
+                          </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="uk-grid uk-container-center main-content" style="margin-bottom: -10px; margin-top: -30px">
+            <div class="article-container uk-width-large-4-12 uk-width-medium-1-3 uk-width-small-1-1">
+
+                <p>A quick Google search of &ldquo;net neutrality proposal&rdquo; will show lists of articles warning of the Internet&rsquo;s demise, sprinkled with a few business op-eds praising the economic wisdom of reducing Internet regulation. Liberals
+                    are outraged. Conservatives are praising economic common sense. But beneath the partisan rhetoric of American politics lies a deeper story, one far older and more significant than bipartisan politics. </p>
+
+                <p>This is a story about railroads and telephone wires. It&rsquo;s a story about building and maintaining the greatest information system known to mankind. But most of all, it&rsquo;s a question: who gets to decide what kind of internet we
+                    all use? </p>
+            </div>
+
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-8-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+              <div class="graphics" style="background-color: rgba(234, 234, 234, 0.3); color: white; padding: 10px">
+                  <h2 style="font-size: 2.1em; text-align: center; text-decoration: underline">
+                    What is net neutrality?
+                  </h2>
+<div style="border-left: 1px dashed #ccc; margin: 30px; padding: 10px 10px 30px 50px; font-style: italic">
+
+<p style="color: black">
+  The principle that Internet service providers should enable access to all content and applications regardless of the source, and without favouring or blocking particular products or websites.
+  <br /><br />
+  - Net Neutrality on <a target="_blank" href="https://en.wikipedia.org/wiki/Net_neutrality">Wikipedia</a>
+</p>
+
+<h2 style="color: black; text-align: center">
+  Need more <a class="readmore-context" href="#net-neutrality-def" data-uk-offcanvas>context?</a>
+</h2>
+</div>
+
+              </div>
+
+            </div>
+
+        </div>
+
+        <div class="article-container icon-container uk-width-large-5-12 uk-width-medium-1-3 uk-width-small-1-1">
+          <img src="wifi3.svg" class="section-icon" style="margin: auto" />
+        </div>
+
+        <div id="railroad-section">
+            <section class="timeline-intro">
+                <div class="container">
+                    <h1 style="font-family: Nixie One">&darr; From Railroads to Fiber-optic Cables &darr;</h1>
+                </div>
+            </section>
+
+            <section class="timeline">
+                <ul>
+                    <li>
+                        <div>
+                            <time style="font-family: Nixie One">1820</time>
+                            <h3> - The Pacific Railway Act</h3>
+
+                            <p>Starting in 1820, states and local communities provided huge amounts of financial aid to railway companies. The goal was expansion: states were expected to put up the capital, but stay out of any regulatory matters in the industry.
+                                The Pacific Railway Act of 1862 gave the responsibility of giving out grants to 16 federal administrators.</p>
+                                <img src="images/old-railroad.jpg" />
+                                <span class="photo-cred">
+                                  By <a href="https://commons.wikimedia.org/w/index.php?curid=3627529">Detroit Publishing Co.</a>, Public Domain
+                                </span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                          <time style="font-family: Nixie One">1887</time>
+                          <h3> - Interstate Commerce Commission is formed</h3>
+                            <p>
+                                As the railroad industry grew, stories of corrupt railroad rating and bankrupt companies shook the nation's confidence. The federal government passed the Interstate Commerce Act of 1887 to create the first regulatory commission in America: the Interstate Commerce Commission (ICC). But the ICC struggled to regulate railroad rates. Railroad lawyers and lobbyists argued that federal regulation in private businesses would threaten the American economy. They also claimed that railroads were not subject to commerce regulation, as they were <bold>"common carriers"</bold>, not the commerce itself.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                          <time style="font-family: Nixie One">1901</time>
+                          <h3> - Theodore Roosevelt becomes President</h3>
+                            <p>
+                                By this time, most railroad companies in the U.S. had merged into six conglomerates. After becoming President in 1901, Theodore Roosevelt started addressing the unequal prices in railroad shipping.
+
+                            </p>
+                            <blockquote>
+                                <span class="first-letter">T</span>he railway is a public servant, its rates should be just to and open to all shippers alike. The government should see to it that within its jurisdiction this is so and should provide a speedy, inexpensive, and effective remedy to that end.<img src="quotation-marks-right.png" /><br /><br /> - Theodore Roosevelt
+                            </blockquote>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                          <time style="font-family: Nixie One">1904</time>
+                          <h3> - Roosevelt Breaks J.P. Morgan's Railroad Trust</h3>
+                            <p>
+                                Theodore Roosevelt used the Sherman Antitrust Act of 1890 to bring a lawsuit against JP Morgan and split up his railroad trust. Roosevelt won the case at the Supreme Court in 1904.
+                            </p>
+                                <blockquote>
+                                    <span class="first-letter">T</span>rust arrangements permitted railroad lines to avoid competition by harmonizing their operations, agreeing not to invade one another's territories and desisting from mutually destructive
+                                    behavior.<img src="quotation-marks-right.png" /><br /><br /> - Susan Crawford in her book <a href="https://en.wikipedia.org/wiki/Captive_Audience">Captive Audience</a>
+                                </blockquote>
+
+
+
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                          <time style="font-family: Nixie One">1910</time>
+                          <h3> - Telephones added to ICC responsibilities</h3>
+                            <p>
+                                Congress added telephone systems to the ICC responsibilities in 1910. Based on their model, the ICC treated telephone companies like railroads declaring telephone companies to be common carriers.
+                            </p>
+                            <img src="images/telephone.jpg" />
+                            <span class="photo-cred">By <a href="//commons.wikimedia.org/wiki/User:Holger.Ellgaard" title="User:Holger.Ellgaard">Holger.Ellgaard</a> - <span class="int-own-work" lang="en">Own work</span>, <a href="http://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=3408689">Link</a></span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                          <time style="font-family: Nixie One">1934</time>
+                          <h3> - FCC is created</h3>
+                            <p>
+                                With telecommunication rapidly rising, the FCC was created in 1934 on the model of the ICC to handle all communication related regulation. The ICC faded out in the next decades due to railroad nationalization.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                          <time style="font-family: Nixie One">1984</time>
+                          <h3> - Breakup of the "Baby Bells"</h3>
+                          <p>
+                            The FCC and FTC led the <a href="#bell-context" class="readmore-context" data-uk-offcanvas> Breakup of the Bell System</a>, a process of events that divested AT&T's monopoly over the telecommunications market. The resulting smaller companies, referred to as "Baby Bells", would later form the parts of the companies now heavily involved in the internet market: AT&T Inc, Verizon and CenturyLink.
+                          </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                          <time style="font-family: Nixie One">1989</time>
+                          <h3> - Birth of the World Wide Web</h3>
+                          <p>
+                            Tim Berners-Lee is credited with the creation of what we now call the World Wide Web. In this year, he created the first web server and web browser, which would later be called Nexus.
+                          </p>
+                          <img src="images/tim.jpg" />
+                          <span class="photo-cred">By <a href="https://commons.wikimedia.org/w/index.php?curid=5869846">Scott Henrichsen </a> - Sir Tim Berners-Lee talking about the Web at the Newseum, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY 2.0 </a></span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                          <time style="font-family: Nixie One">1996</time>
+                          <h3> - Telecommunications Act of 1996</h3>
+                          <p>
+                            The <a href="#tel-act-context" class="readmore-context" data-uk-offcanvas> Telecommunications Act of 1996</a> formed the basis for communication regulation for the next two decades. However, it also included some ambiguous language: the FCC classified the internet under "information services" to keep it from the Title II regulation applied to telecommunications companies. But at the same time, the act also required the FCC to help accelerate "advanced telecommunications capability" (section 706 of Communications Act of 1934), which included data, graphics, video and VoIP. These two requirements went on to become arguments for both pro and anti-net neutrality camps.
+                          </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                          <time style="font-family: Nixie One">2008</time>
+                          <h3> - Comcast vs FCC</h3>
+                          <p>
+                            The FCC made its first major decision in the realm of net neutrality in 2008 when it upheld a 3-2 decision against Comcast, who was charged with throttling the speeds of its users accessing file-sharing software such as BitTorrent. No fine was charged, but Comcast was required to stop slowing down speeds.
+                          </p>
+                          <img style="width: 80%; margin: auto; display: block" src="images/comcastlogo.png" />
+                          <br />
+                          <span class="photo-cred" style="margin-top: 25px">By <a href="http://corporate.comcast.com/">Comcast</a>, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=6691463">Link</a></span>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                          <time style="font-family: Nixie One">2010</time>
+                          <h3> - Principles of net neutrality introduced</h3>
+                          <p>
+                            The FCC informally adopts three principles of net neutrality: transparency of network management, no blocking or throttling lawful content and no unreasonable discrimination against consumers.
+                          </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                          <time style="font-family: Nixie One">2015</time>
+                          <h3> - Open Internet Order</h3>
+                          <p>
+                            Led by President Obama and current FCC Chairman Tom Wheeler, the FCC passed the Open Internet Order to legally preserve the principles of net neutrality. The Open Internet Order reclassified broadband internet from an information service to a telecommunications service. This placed broadband internet under Title II (also referred to as common carrier law from the railroad era) regulations under the Communications Act of 1934.
+                          </p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="uk-grid uk-container-center main-content" style="margin-bottom: -10px; margin-top: 40px">
+            <div class="article-container uk-width-large-4-12 uk-width-medium-1-3 uk-width-small-1-1">
+                <p>Now, two years after Obama&rsquo;s Open Internet Order, Chairman Pai is continuing to push forward his response: the Restoring Internet Freedom order. Disguised as a common net neutrality call-to-action, the order actually wants to set things
+                    back to how they were before 2015. The proposal&rsquo;s purpose can be broken down into three main objectives: repeal Title II regulation of ISPs, weaken the FCC&rsquo;s powers to proactively investigate ISPs and rewrite net neutrality
+                    principles as a set of self-adopted guidelines for ISPs.</p>
+
+                <p>Chairman Pai wants to take a conservative economic approach by reducing the &ldquo;Mother-may-I&rdquo; relationship between business and government. If the ISPs pinky-promise to be good, the FCC won&rsquo;t step in until there is a clear
+                    violation of the law. On the other side, Pai&rsquo;s opponents fear making net neutrality voluntary: they would rather the FCC have a big stick visibly in hand, ready to take legal action against ISPs.</p>
+
+                <p>But to some extent, simply understanding the history of communication regulation isn&rsquo;t enough. Despite being used by hundreds of millions of Americans everyday, internet technology and how it works can often be misunderstood.</p>
+            </div>
+
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-8-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+
+                <div class="graphics" style="background-color: rgba(234, 234, 234, 0.2); color: white; padding: 10px">
+                    <h2 style="font-size: 2.1em; text-align: center; text-decoration: underline">
+                      Internet Freedom Order
+                    </h2>
+                    <h2>
+                      1. Repeal Title II regulations
+                    </h2>
+                    <h2>
+                      2. Reduce FCC's investigatory authority
+                    </h2>
+                    <h2>
+                      3. Rewrite net neutrality as self-adopted principles
+                    </h2>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="article-container icon-container uk-width-large-5-12 uk-width-medium-1-3 uk-width-small-1-1">
+          <img src="images/icons/server.svg" class="section-icon" style="margin: auto" />
+        </div>
+
+        <div class="uk-grid uk-container-center main-content" style="margin-bottom: -15px; margin-top: 40px">
+            <div class="article-container uk-width-large-4-12 uk-width-medium-1-3 uk-width-small-1-1">
+                            <h2 style="color: black; font-size: 2em">Modern Day Networks</h2>
+              <p>In the days of railroads, policymakers were concerned with terms like rate-setting, rail consolidation and common carriers. But now the language is different. Railway tracks became fiber-optic cables. The behemoths of industry — Great
+                  Northern Railways, J.P. Morgan — have been replaced by companies like Comcast, CenturyLink and AT&amp;T. </p>
+
+              <p>This sort of rapid technological transformation begs a question — should old rules be applied to such new systems?</p>
+
+            </div>
+
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-8-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+
+                <div class="graphics">
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="uk-grid uk-container-center main-content" id="internet-infra-section">
+            <div class="article-container uk-width-large-5-12 uk-width-medium-1-3 uk-width-small-1-1">
+
+
+                <p>Enter one of cable internet&rsquo;s favorite counter-arguments: the Antiquated Approach. Following the 2015 net neutrality decision, Verizon released a sarcastic press release written entirely in Morse Code, describing the Title II regulations
+                    as &ldquo;antiquated&rdquo; and &ldquo;unnecessary&rdquo;. </p>
+
+                <p>While Verizon&rsquo;s PR stunt was clever, it&rsquo;s guilty of oversimplifying the debate. New technology can still benefit from old principles and legislation. When it comes to governing the internet, it&rsquo;s important to know what
+                    these regulations would actually affect. </p>
+
+                <p>&ldquo;Blocking&rdquo; and &ldquo;throttling&rdquo; are two terms at the center of the net neutrality discussion. Net neutrality advocates worry that if ISPs are not required by law to treat content the same regardless of the source, they
+                    could potentially set up &ldquo;fast lanes&rdquo; for content companies that can afford to pay for a speed boost.</p>
+
+                <p>Gigi Sohn, counselor to the former chairman of the FCC and Free Press advocate, commented on this possibility during a net neutrality roundtable hosted by Mozilla. &quot;The
+                    internet has been the most democratic of services, but all of that is under threat if the big guys or gals can pay for faster service,&quot; Sohn said.</p>
+                    <blockquote style="font-size: 22px">
+                      <span class="first-letter">T</span>his is really about whether the FCC will have oversight over access to the
+                      most important network of our lifetime.<img src="quotation-marks-right.png" />
+                    </blockquote>
+
+            </div>
+
+            <!-- graphics go in this div -->
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-7-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+                <div class="graphics" style=" margin: auto">
+                    <img style="max-width: 400px" src="images/verizon-press-release.png" />
+                    <div class="photo-cred" style=" display: block; margin-top: 10px">
+
+
+                    <span style="width: 100%; text-align: center; margin-left: 10%">
+                      Screenshot of Verizon's blog post. <a href="http://www.verizon.com/about/sites/default/files/VZ_NR_--_2-26-15_VZ_Statement_on_Open_Internet_Order_FINAL_1.pdf">Full text</a>.
+                    </span>
+                      </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="uk-grid uk-container-center main-content" style="margin-bottom: -10px">
+            <div class="article-container uk-width-large-4-12 uk-width-medium-1-3 uk-width-small-1-1" id="scenario">
+              <p>
+                As with most complex systems, examples of how issues of net neutrality affect the internet can help set the scene. Let’s look at a recurring hypothetical situation from net neutrality advocates: the Startup Crusher. With no net neutrality rules in place, ISPs could potentially require small companies that move a lot of content through the  internet servers to pay extra for a speed boost in their service. Because of Netflix’s rise to success, they could probably afford to pay the extra cash to boost their video loading speeds. But before Netflix was Netflix, it was just another Silicon Valley video startup with a dream. And in this situation, the other Silicon Valley video startups would be at an immediate speed disadvantage if they cannot pay the fee. That means losing viewers. Studies have shown that some internet users start to abandon videos after only <a class="readmore-context" href="#loading-context" data-uk-offcanvas> two seconds of loading</a>
+
+              </p>
+
+                <p>This first scenario contains a few nods to real-life events. Reed Hastings, CEO of Netflix, <a target="_blank" href="https://www.theverge.com/2017/5/31/15719824/netflix-ceo-reed-hastings-net-neutrality-not-our-battle">told a reporter </a>at the Code Conference in May that net neutrality wasn&rsquo;t on his company&rsquo;s list of high priorities at the moment, explaining
+                    that &ldquo;where net neutrality is really important is the Netflix of 10 years ago.&rdquo;</p>
+
+                <p>&ldquo;It&rsquo;s not narrowly important to us because we&rsquo;re big enough to get the deals we want,&rdquo; Hastings said. </p>
+
+                <p>Another hypothetical worth mentioning revolves around zero-rated services. Large ISPs such as Comcast have been expanding vertically by
+                  <a class="readmore-context" href="#merger-context" data-uk-offcanvas> purchasing content companies like NBC Universal</a>. In this scenario, ISPs like Comcast could boost the speeds of its own content services while throttling users&rsquo; access to outside content
+                    providers like Netflix.</p>
+
+
+
+                <p>Paul Bischoff, editor of tech site <a href="https://www.comparitech.com/" target="_blank">Comparitech</a> and long-time tech writer, has written extensively on issues of net neutrality and internet startups. He tends to view zero-rated services as a thinly cloaked gatekeeping process.</p>
+
+
+            </div>
+
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-8-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+
+                <div class="graphics">
+                  <h2 style="margin-bottom: -10px; font-size: 1.4em; text-align: center">The Internet Works Through Series of <span style="color: #29ABE2">Requests</span> and <span style="color:#006199 ">Responses</span> Between Computers, Servers and Content Providers</h2>
+                  <img src="images/diagram2-01.png" />
+                  <p class="photo-cred">
+                    Graphic simplified for illustrative purposes. Own work. <a target="_blank" href="https://commons.wikimedia.org/w/index.php?curid=17689153">Logo</a> by Netflix - Netflix Media Center, Public Domain
+                  </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="uk-grid uk-container-center main-content" style="margin-bottom: -10px">
+            <div class="article-container uk-width-large-4-12 uk-width-medium-1-3 uk-width-small-1-1" id="scenario2">
+
+                <p>&ldquo;I think it's just anti-net neutrality under a different name. You're still funneling people to a specific service,&rdquo; said Bischoff. &ldquo;Of course, they still have the freedom to use another service...but that allows ISPs
+                    to be gatekeepers and pick winners and losers for the Internet.&rdquo;</p>
+
+                <p>The Open Internet Order of 2015 gave the FCC authority to get preemptively involved in complex issues such as throttling content and zero-rated services. But for Chairman Pai, this was creating a solution to a problem that didn&rsquo;t
+                    exist. &quot;For decades before 2015, we had a free and open internet,&quot; said Pai in an FCC address. &quot;We were not living in some digital dystopia before the partisan imposition of a massive plan hatched in Washington saved
+                    all of us.&quot; </p>
+
+                <p>He may have a fair point on the &ldquo;digital dystopia&rdquo; bit. Since 2000, the percentage of U.S. population using the internet has more than doubled, from 43% to currently 88.5% as of 2016
+                    .</p>
+
+                <p>That being said, claiming that
+                    <italic>nothing</italic> was wrong with U.S. internet infrastructure before 2015 is more of a stretch. </p>
+
+
+            </div>
+
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-8-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+
+                <div class="graphics">
+                  <h2 style="margin-bottom: -10px; font-size: 1.6em; text-align: center">Internet Use Has More than Doubled Since 2000</h2>
+                  <img src="images/chart-01.png" />
+                  <p class="data-source">
+                    Data from <a href="http://www.internetlivestats.com/internet-users/us/ ">Internet Live Use</a>
+                  </p>
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="article-container icon-container uk-width-large-5-12 uk-width-medium-1-3 uk-width-small-1-1">
+          <img src="images/icons/internet.svg" class="section-icon" style="margin: auto" />
+        </div>
+
+        <div class="uk-grid uk-container-center main-content" id="monopoly-section">
+            <div class="article-container uk-width-large-5-12 uk-width-medium-1-3 uk-width-small-1-1"  style="margin-bottom: -30px">
+<h2 style="color: black">Competition and Carving Out Markets</h2>
+                <p>In the U.S., identifying as a free-market economist can feel as American as apple pie. Professor Dennis Weisman, who specializes in the economics of regulation at Kansas State University, uses the zero-rated service example as a good way
+                    to explain the conservative economic view.</p>
+
+                <p>&ldquo;I am a free-market economist. That means I want to see evidence of a non-transitory market failure before I am willing to accept that government intervention will improve economic welfare,&rdquo; said Weisman. &ldquo;I just don't
+                    see the market failure here.&rdquo;</p>
+
+
+            </div>
+
+            <!-- graphics go in this div -->
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-7-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+
+
+                <div class="graphics">
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="uk-grid uk-container-center main-content">
+            <div class="article-container uk-width-large-4-12 uk-width-medium-1-3 uk-width-small-1-1" >
+              <p>He went on to explain that it really comes down to a matter of who is willing to take risks. If using zero-rated services pays off, then the market decided. It&rsquo;s then up to other ISPs to either take the same risk to keep up, or try
+                  something different. &ldquo;The government should not be in the role of protecting competitors from their own bad strategy or their reluctance to take a risk that other providers have been willing to bear,&rdquo; said Weisman. </p>
+
+              <p>But putting zero-rated services and other risk-taking aside, there is an even deeper issue at the root of net neutrality, one rooted in the unique history and landscape of the U.S. </p>
+              <p>
+Across the country, 67% of internet users have no more than 2
+                  or fewer choices in broadband providers.</p>
+
+              <p>A few caveats should be mentioned here at the start. This 67% statistic comes from an FCC report from 2014. It also is based on the <a class="readmore-context" href="#term-context" data-uk-offcanvas> FCC definition of the &ldquo;broadband&rdquo;</a> at the time. In this case, broadband refers to only wireline
+                  broadband internet access at the standard qualifying speed of 4Mbps download rate and 1Mbps upload. Nevertheless, this was the internet landscape when the 2015 Open Internet Order first came up for debate.</p>
+
+                <p>Fast-forward to 2016, and the FCC has redefined the standard qualifying speed for fixed wireline broadband to 25Mbps/3Mbps, nearly 6 times the download speed of the previous definition.
+                    With this new definition came another report, and a wave of stats illuminating the apparent lack of competition in the broadband internet market. The FCC found that 21% of census blocks only had one provider offering the new standard
+                    broadband speed. 30% of blocks had zero options at 25Mbps/4Mbps. </p>
+
+                <p  id="trigger-c3">Net neutrality advocates point out that because the cable internet landscape is dominated by a handful of companies, it is even more important to have Title II regulations to protect consumers and smaller businesses.</p>
+
+                <p>Matthias Klang, associate professor at Fordham University, focuses his research on issues of digital activism, privacy rights and bridging the digital divide. </p>
+
+                <blockquote id="start"><span class="first-letter">T</span>he state of broadband in the States is problematic on many levels. Part of it is down to the fact that the main cable companies have divided up the world among themselves here. Which means they don't have to try as hard to provide
+                    the services that families and individuals need.<img src="quotation-marks-right.png" /> <br /><br />- Matthias Klang</blockquote>
+
+                <p>To say &ldquo;divided up the world&rdquo; may seem like an exaggeration; but when you map the broadband availability data, the visual is striking. The National Broadband Map, created in 2014 under the FCC, allows users to see where internet
+                    services are provided across the country. The data includes various types of internet access, including wireline broadband cable, wireless, DSL and fiber-optic. </p>
+                    <p>
+However, for some time now the measurement of wired broadband
+                    cable access has remained the standard for measuring the state of the industry. Broadband cable is faster on average than DSL and wireless technology, and although fiber-optic has shown speeds that far surpass wired broadband, the
+                    service is still in testing phases in many parts of the country.</p>
+
+                <p>By mapping the providers offering wired broadband internet, one can start to see the dividing lines take shape. The following maps show how even in urban areas, cable broadband providers can strategically carve out service areas among themselves,
+                    and reduce consumer choice for service. Areas where broadband providers overlap are very rare.</p>
+            </div>
+
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-8-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+
+                  <h2 style="margin-left: 2%; text-align: center; font-size: 1.3em">
+                      Majority of Americans Have No More than 2 Choices of ISPs at Qualifying Broadband Speed
+                  </h2>
+
+
+                <div class="graphics">
+                  <p class="annotate" style="width: 150px">
+                    In 2014 67% of Americans had 2 or fewer choicers in broadband internet providers
+                  </p>
+                  <!-- <svg height="20" width="20" class="annotate">
+  <line x1="0" y1="0" x2="20" y2="25" style="stroke:rgb(255,0,0);stroke-width:2" />
+    </svg> -->
+                  <br />
+                  <div id="chart">
+
+                  </div>
+                  <p class="hover-for-values">
+                    Hover for exact values. Click a category to remove from chart.
+                  </p>
+                  <p class="data-source">
+                    Data from <a href="https://apps.fcc.gov/edocs_public/attachmatch/DOC-344499A1.pdf">FCC Internet Access Services report</a>
+                  </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="uk-cover-background uk-height-viewport" id="bg_one" style="position: relative">
+            <div style="width: 300px;">
+                <span style="position: absolute; font-size: 1.2em; max-width: 350px; background-color: white; margin-top: 100px; margin-left: 60%"><h2>
+      Minneapolis, MN is split between <span style="color: #D71921">Comcast</span> and <span style="color: #6aa412">Charter</span>
+    </h2></span>
+            </div>
+
+              <p class="map-source" style="margin-left: 5px">
+                Map made in QGIS using data from the <a href="https://www.broadbandmap.gov/data-download">National Broadband Map</a> showing broadband providers at Census Block level. States cut out on state border line.
+              </p>
+
+        </div>
+
+        <div class="uk-cover-background uk-height-viewport" id="bg_two"  style="position: relative">
+            <div>
+                <span style="position: absolute;font-size: 1.2em; background-color: white; margin-top: 5%; margin-left: 60%; max-width: 300px; padding: 5px"><h2>
+      Los Angeles, CA has two cable broadband providers: <span style="color: #7cb9fa">Time Warner</span> and <span style="color: #6aa412">Charter</span>
+    </h2>
+                </span>
+            </div>
+            <p class="map-source" style="margin-left: 5px">
+              Map made in QGIS using data from the <a href="https://www.broadbandmap.gov/data-download">National Broadband Map</a> showing broadband providers at Census Block level. States cut out on state border line.
+            </p>
+        </div>
+
+        <div class="uk-cover-background uk-height-viewport" id="bg_three"  style="position: relative">
+            <div>
+                <span style="position: absolute; font-size: 1.2em; background-color: white; margin-top: 10%; margin-left: 10%; max-width: 300px"><h2>
+      Roanoke, VA is served by <span style="color: #a17eaf">Cox</span>, <span style="color: #D71921">Comcast</span> and <span style="color: #e2d91f">Shentel</span>
+    </h2>
+                </span>
+            </div>
+            <p class="map-source" style="margin-left: 5px">
+              Map made in QGIS using data from the <a href="https://www.broadbandmap.gov/data-download">National Broadband Map</a> showing broadband providers at Census Block level. States cut out on state border line.
+            </p>
+        </div>
+
+
+
+        <div class="uk-grid uk-container-center main-content" style="margin-top: 40px; margin-bottom: -25px">
+            <div class="article-container uk-width-large-4-12 uk-width-medium-1-3 uk-width-small-1-1">
+                <p>For Paul Bischoff, these dividing lines set the scene for the kind of regulation that Title II provides. &ldquo;Ideally, in all honesty we wouldn't have to have the Title II rule if we could have more competition among ISPs,&rdquo; said
+                    Bischoff.</p>
+
+                <p>But others see this as too narrow a view. Michael Santorelli is a Director of the Advanced Communications Law &amp; Policy Institute (ACLP) at New York Law School, and has written widely on broadband and telecommunication regulation. &#160;&ldquo;Consumers
+                    are the best regulators in competitive markets &ndash; and the broadband space is competitive,&rdquo; said Santorelli. &ldquo;Consumers have numerous options for getting online at an array of speeds. Data showing limited choices for
+                    access reflects one, an artificially high speed thresholds for measuring &lsquo;broadband&rsquo;, and two, an unfortunate policy preference for considering only a wireline connection as &lsquo;broadband&rsquo;. For most consumers,
+                    myself included, broadband speed is an abstraction &ndash; your connection either allows you to do what you want or it doesn&rsquo;t.&rdquo;</p>
+
+                <p>Access to any kind of internet connection surely is the first priority over speed or type. After all, certain people may only use the internet for basic tasks that don&rsquo;t depend much on high speeds like email or messaging. From this
+                    perspective, it&rsquo;s all &ldquo;internet&rdquo;. </p>
+
+                <p>But a <a target="_blank" href="https://www.federalreserve.gov/econresdata/feds/2015/files/2015108pap.pdf">study</a> conducted for the Federal Reserve Board has shown that high school students with access to high-speed internet showed improved results on SAT scores and other postsecondary outcomes
+                    ). More access, combined with faster access, is the ideal scenario. And with fiber-optic still being tested and DSL technology falling behind, broadband is usually the best bet.</p>
+
+                <p>So how do we get there? People like Santorelli and Dennis Weisman say consumers should use their choice of provider as a pressure on the market to improve. Others see the market as, in part, already failed since the choices don&rsquo;t
+                    always exist. Tim Wu, professor at Columbia Law School and author credited with officially coining the term net neutrality, explained his take in a 2014 interview with the New York Times.</p>
+
+                <p>&ldquo;It&rsquo;s just very simple economics,&rdquo; Wu <a target="_blank" href="https://www.nytimes.com/2014/10/31/upshot/why-the-us-has-fallen-behind-in-internet-speed-and-affordability.html?_r=0">told the NYT</a>. &ldquo;The average market has one or two
+                    serious Internet providers, and they set their prices at monopoly or duopoly pricing.&rdquo; </p>
+            </div>
+
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-8-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+
+                <div class="graphics">
+                    <blockquote style="font-size: 1.6em">
+                        <span class="first-letter">W</span>hen you've only got one provider, who makes the rules? The provider makes the rules.<img src="quotation-marks-right.png" />
+                        <br /><br />- Previous FCC Chairman Tom Wheeler
+                    </blockquote>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="uk-grid uk-container-center main-content" >
+            <div class="article-container uk-width-large-4-12 uk-width-medium-1-3 uk-width-small-1-1">
+                <p>It&rsquo;s easy to feel lost in the sea of technical terms around net neutrality, especially when both sides are promoting &ldquo;free&rdquo; and &ldquo;open&rdquo; access while meaning two different things. Wu might consider &ldquo;serious
+                    Internet providers&rdquo; as wired broadband, while people like Santorelli fail to see the practical difference between DSL, broadband and wireless — as long as it gets the job done. </p>
+
+                <p>Perhaps an additional measure is needed to assess the state of U.S. broadband and ISPs. In 2015, the Organisation for Economic Co-operation and Development (OECD) released their Digital Economy Outlook report. Their research analyzed the cost and speed of broadband offerings
+                    in the 35 countries within the organisation. </p>
+
+                <p>Of the countries measured, the U.S. tops the list as the most expensive country for average broadband internet subscriptions. Among other findings, the Institute found that Americans on average were paying more for slower speeds compared to countries around the world.</p>
+
+            </div>
+
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-8-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+
+
+                <div class="graphics">
+
+                </div>
+
+            </div>
+        </div>
+        <h2 style="text-align: center; font-size: 2em">U.S. Pays More for Slower Internet</h2>
+
+        <div style="margin: auto">
+
+        <p style="text-align: center; font-size: 1em">
+          Hover for exact values.
+        </p>
+        </div>
+        <p class="scatter-annotate" style="max-width: 300px">
+          The U.S. is the most expensive OECD country for broadband internet subscriptions at an avg of $69.66 per month. It ranked 23rd of 34 in speed.
+        </p>
+
+        <img src="images/arrow.svg" style="width: 90px" class="scatter-annotate-arrow" />
+        <div id="scatter2">
+
+        </div>
+        <div style="max-width: 1000px; margin: auto">
+
+        <p class="data-source" style="margin-left: 5px">
+          Data from <a href="http://www.oecd-ilibrary.org/science-and-technology/oecd-digital-economy-outlook-2015_9789264232440-en">OECD Digital Economy Outlook 2015 Report</a>. Speed testing conducted by M-Lab. Prices calculated based on recurring 15 GB / month plans with 25/30 Mbpss and above, VAT included, Sept. 2014.
+        </p>
+        </div>
+
+        <div class="uk-grid uk-container-center main-content" style="margin-bottom: -10px; margin-top: 40px">
+            <div class="article-container uk-width-large-4-12 uk-width-medium-1-3 uk-width-small-1-1">
+              <p>Pai claims to be combatting this disadvantage by removing Title II. In his <a target="_blank" href="http://transition.fcc.gov/Daily_Releases/Daily_Business/2017/db0426/DOC-344590A1.pdf">opening speech</a> at the FCC, he cited a different study claiming that since Title II regulation was introduced in 2015, the broadband industry has lost $5billion in investment
+                  . This has been one of the key findings he often uses to prove that net neutrality will cripple broadband expansion.</p>
+
+              <p>Shortly after these remarks however, some concerns were raised on the validity of the study. The research was conducted by a conservative think tank called the Free State Foundation. The Foundation has some <a class="readmore-context" href="#foundation-context" data-uk-offcanvas> notable ties</a> to the telecommunications
+                  lobbying industry, receiving hundreds of thousands of dollars in donations from cable lobbying groups.</p>
+
+                <p>Advocacy group Free Press published their own report in response to Pai&rsquo;s comments containing an analysis of financial disclosures, statements from investors and infrastructure investments by publicly traded ISPs since 2012.</p>
+
+
+            </div>
+
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-8-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+
+                <div class="graphics">
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="uk-grid uk-container-center main-content" style="margin-bottom: -10px; margin-top: 30px">
+            <div class="article-container uk-width-large-4-12 uk-width-medium-1-3 uk-width-small-1-1">
+
+                <p>&ldquo;If
+                    investment is the FCC&rsquo;s preferred metric, then there&rsquo;s only one possible conclusion: Net Neutrality and Title II are smashing successes,&rdquo; said Free Press Research Director S. Derek Turner, the author of the report.
+                     </p>
+
+                <p>The Free Press report shows that public traded ISPs were not affected negatively by legislation introduced in 2015. The report also cites multiple CEOs of ISPs as telling investors that the Title II regulations of 2015 would not hurt their
+                    investment plans. </p>
+
+                    <blockquote>
+                      <span class="first-letter">T</span>itle II, it didn’t really hurt us; it hasn’t hurt us.
+                      <br />
+                      <br />
+                      - Charter CEO Thomas Rutledge
+                      <img src="quotation-marks-right.png" />
+                    </blockquote>
+
+                <p>But even here, in the realm of analysing hard infrastructure data, the battle of semantics rages again. The documents used by Free Press are legal and credible sources; but for Santorelli, they are taking too wide of a scope by analysing the
+                    output of entire companies.</p>
+
+                <p>&ldquo;The Free Press report and others of its ilk that I&rsquo;ve seen appear to evaluate all investments made by firms that offer broadband, including internationally and investments in non-broadband service offerings,&rdquo; said Santorelli.
+                    In contrast, the Free State Foundation study cited by himself and other economic writers &ldquo;seems more directly relevant&rdquo;.</p>
+
+                <p>So while numbers don&rsquo;t lie, they depend on your definition of broadband. They also depend on if you evaluate a company&rsquo;s investment figures on total investment spent, or on only wired broadband. Many of these companies have
+                    diversified so much that they offer multiple kinds of internet across the country. </p>
+
+                <p>In some respects, focusing too much on definitions may be the wrong approach however. Investment plans by large companies are often planned far in advance. <a class="readmore-context" href="#investors-context" data-uk-offcanvas> Large ISPs like AT&amp;T announced to investors</a> back in 2012 that they
+                    would be increasing investment in wireless and wireline internet until 2015, after which they would return to previous levels
+                    . This decision was made long before the net neutrality debate introduced Title II regulation in 2015. By zooming in on changes within just a few years of new legislation, there&rsquo;s a risk of capturing too small of a sample size.</p>
+
+                <p>&quot;Because AT&amp;T alone accounts for nearly a third of the total ISP industry&rsquo;s investments, any cyclical shift at AT&amp;T can impact the aggregate in a manner that swamps the overall actual trend,&quot; Turner wrote for Free Press. </p>
+
+                <p>Regardless of AT&amp;T&rsquo;s planned decline in investment after 2015, Free Press found that the aggregate increase in ISP investment since 2015 was a 5% increase. Regardless of the findings over a few years, it&rsquo;s worth noting
+                    that making huge claims of investment loss based on only a few years of data (not to mention assuming correlation = causation) is hardly the foundation of a solid argument. </p>
+            </div>
+
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-8-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+
+                <div class="graphics">
+                  <h2 style="font-size: 1.5em; text-align: center">Free Press Report Shows Cable Broadband Investment Increased Overall After Open Internet Order</h2>
+                    <img src="images/chart-02.png" />
+                    <p class="data-source">
+                      Data from <a href="https://www.freepress.net/sites/default/files/resources/internet-access-and-online-video-markets-are-thriving-in-title-II-era.pdf ">Free Press Report</a>
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="article-container icon-container uk-width-large-5-12 uk-width-medium-1-3 uk-width-small-1-1">
+          <img src="images/icons/network.svg" class="section-icon" style="margin: auto" />
+        </div>
+
+        <div class="uk-grid uk-container-center main-content" id="regulation-section" style="margin-bottom: -20px;">
+            <div class="article-container uk-width-large-5-12 uk-width-medium-1-3 uk-width-small-1-1">
+              <h2>Public Utility or Light-touch Regulation</h2>
+                <p>Chairman Pai usually describes Title II regulation as reclassifying broadband as a public utility. Big broadband companies have quickly joined to support him in making sure Title II is removed in August. But Free Press and other advocacy
+                    groups have started to accumulate their own coalition on the other side. </p>
+
+                    <p>
+                    Advocacy group <a target="_blank" href="https://www.battleforthenet.com/">Battle for the Net</a> and other net neutrality proponents organized a Net Neutrality Day of Action on July 12. Major tech companies such as Twitter, Netflix, Mozilla, Reddit, and more participated by adding popups and loading screens on their sites as a form of protest. Battle for the Net collected roughly 2.1 million comments to post on the FCC comment site over the course of the day.</p>
+
+                <p>Beneath the technical debate over ISP investment, and beneath what counts as broadband internet speeds, lies a more philosophical question that shapes how people view net neutrality: is the internet more of a luxury or a necessity? Is
+                    it a service like cable television or Netflix? Or is it a utility, like electricity or water?</p>
+            </div>
+
+            <!-- graphics go in this div -->
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-7-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+
+                <div class="graphics">
+                  <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Protest against <a href="https://twitter.com/hashtag/NetNeutrality?src=hash">#NetNeutrality</a> goes live. This is the message Reddit shown on r/technology <a href="https://t.co/E5kwbK1Zli">pic.twitter.com/E5kwbK1Zli</a></p>&mdash; Catalin Cimpanu (@campuscodi) <a href="https://twitter.com/campuscodi/status/885110887916425216">July 12, 2017</a></blockquote>
+                  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="uk-grid uk-container-center main-content" style="margin-bottom: -10px;">
+            <div class="article-container uk-width-large-5-12 uk-width-medium-1-3 uk-width-small-1-1">
+
+                <p>
+                  A recent survey conducted by Freedman Consulting found that <a class="readmore-context" href="#survey-context" data-uk-offcanvas>83% of Americans</a> polled believe that "internet is essential infrastructure, like roads and bridges". Results showed bipartisan support for net neutrality regulations.
+                </p>
+                <p>As Gigi Sohn described in a round table discussion, the net neutrality debate is more than a battle between big business and government. She called it a debate about how to oversee the &ldquo;most important network of our lifetime&rdquo;.</p>
+
+                <p>Public comment and industry opinions have been shown to sway legislation in the past. In part, the FCC decision in 2015 was influenced by massive consumer coordination on behalf of stricter net neutrality regulation. But that was also
+                    under a Democratic president who supported these regulations, and an FCC Chairman who was a Democrat as well. </p>
+
+                <p>Paul Bischoff fears that this time around, the 90 day comment period is more of a &ldquo;formality&rdquo; than anything. </p>
+                    <blockquote>
+                      <span class="first-letter">I</span> think Chairman Pai and the Trump administration are going to do what they want to do. I don&rsquo;t think
+                      they will take into consideration what the general public wants because they are working in the interests of ISPS, particularly Chairman Pai who is a former Verizon lawyer&#8230;<img src="quotation-marks-right.png" />
+                    </blockquote>
+
+                <p>If Pai's proposal does go through unaltered, net neutrality regulations will likely become a footnote on the Terms &amp; Agreements contracts of ISPs whenever they install broadband service. ISPs will have less oversight when it comes to
+                    broadband expansion, zero-rated services and content throttling. This could lead to benefits for the industry and speed boosts for consumers. </p>
+
+                <p>Alternatively, it could be handing ISPs more power than they already have. </p>
+
+            </div>
+
+            <!-- graphics go in this div -->
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-7-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+
+                <div class="graphics">
+
+                  <h2>77% of Americans Support Current Regulations</h2>
+
+                  <div  id="donut">
+
+                  </div>
+                  <p class="data-source">
+                    Source: <a href="https://www.freepress.net/sites/default/files/resources/internet-access-and-online-video-markets-are-thriving-in-title-II-era.pdf">Freedman Consulting Net Neutrality Poll</a>
+                  </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="uk-grid uk-container-center main-content" style="margin-bottom: -10px;">
+            <div class="article-container uk-width-large-5-12 uk-width-medium-1-3 uk-width-small-1-1">
+
+                <p>
+                  The debate over net neutrality regulations comes down to who should have control over regulating the internet. ISPs in America, now joined by Ajit Pai, have shown a keen interest on maintaining the control of their own pipes and setting their own rules.
+                </p>
+
+                <p>With both sides of the debate using their own reports and data, it can feel like the net neutrality issue is falling into the ever growing divide of post-truth politics. Appeals to emotion can be found in each camp and data is picked based
+                    on shifting definitions of what is and is not broadband internet. But definitions aside, the crux of the matter comes down to whether or not large ISPs can be trusted to voluntarily keep a truly content neutral internet. </p>
+
+                <p>Technology is always evolving and internet access continuesto expand. An official decision on Pai's proposal will be made on August 16, but the discussion is far from over. And though
+                    the technicalities can be confusing, this debate isn&rsquo;t for policy wonks and economic think tanks: it&rsquo;s for the people, the users of the internet, to decide how to treat the network of a lifetime.</p>
+
+            </div>
+
+            <!-- graphics go in this div -->
+            <div data-uk-sticky="{media: 766, boundary: true, top:50, getWidthFrom: '#sticky-width'}" class="uk-width-large-7-12 uk-width-medium-2-3 uk-grid-width-small-1-1">
+
+                <div class="graphics">
+
+                </div>
+
+            </div>
+        </div>
+</div>
+
+<div class="article-container icon-container uk-width-large-5-12 uk-width-medium-1-3 uk-width-small-1-1">
+  <img src="images/icons/internet.svg" class="section-icon" style="margin: auto" />
+</div>
+
+
+
+
+
+
+    <footer>
+        <p style="font-size: 1.2em">
+
+            <br /> Words and code by <a style="color: white; text-decoration: underline" href="https://twitter.com/bnj_cooley" target="_blank">Benjamin Cooley</a>. Previous work <a style="text-decoration: underline" href="https://benjamincooley.me/work/">here</a>.
+             <br />Icons made by <a style="text-decoration: underline;" href="http://www.flaticon.com/authors/madebyoliver" title="Madebyoliver">Madebyoliver</a> from <a style="text-decoration: underline;"  href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> are licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+            <br /> Story completed for the Goldsmiths MA Digital Journalism program.
+            <br />
+        </p>
+
+        <div>
+          <div style="margin: auto; display: block; max-width: 300px">
+            <h2>Tools</h2>
+            <p >
+              Site made with Uikit and ScrollMagic. Maps created using QGIS. Data visualizations made with D3.js. Graphics and static charts created using Tableau and Adobe Illustrator.
+            </p>
+          </div>
+          <div style="margin: auto; height: 150px">
+            <h2>
+              Connect
+            </h2>
+            <div class="table" style="margin: auto">
+
+
+            <ul class="share-buttons" style="padding: 5px; margin: auto" >
+
+              <li><a href="https://twitter.com/bnj_cooley" target="_blank" title="Twittert"><img alt="Tweet" src="images/icons/twitter2.svg"></a></li>
+              <li ><a href="https://medium.com/@bnj_cooley" title="Facebook" target="_blank"><img alt="Share on Facebook" src="images/icons/medium.svg"></a></li>
+              <li><a href="https://www.reddit.com/user/bendata/" target="_blank" title="Reddit"><img alt="Send email" src="images/icons/reddit2.svg"></a></li>
+              <li><a href="https://github.com/bnj-cooley" target="_blank" title="Github"><img alt="Send email" src="images/icons/github.svg"></a></li>
+              <li><a href="https://benjamincooley.me/" target="_blank" title="Wordpress"><img alt="Send email" src="images/icons/wordpress.svg"></a></li>
+            </ul>
+            </div>
+          </div>
+        </div>
+
+    </footer>
+    </div>
+</body>
+<script>
+    $("#scroll-to-start").click(function() {
+        $('html,body').animate({
+                scrollTop: $("#start-article").offset().top
+            },
+            2000);
+    });
+
+    $(".scroll-back-to-start").click(function() {
+        $('html,body').animate({
+                scrollTop: $("#start-article").offset().top
+            },
+            2000);
+            UIkit.offcanvas.hide([force = false])
+    });
+
+    $(".scroll-to-railroad-section").click(function() {
+        $('html,body').animate({
+                scrollTop: $("#railroad-section").offset().top
+            },
+            500);
+            UIkit.offcanvas.hide([force = false])
+    });
+
+    $(".scroll-to-internet-infra-section").click(function() {
+        $('html,body').animate({
+                scrollTop: $("#internet-infra-section").offset().top
+            },
+            2000);
+            UIkit.offcanvas.hide([force = false])
+    });
+
+    $(".scroll-to-monopoly-section").click(function() {
+        $('html,body').animate({
+                scrollTop: $("#monopoly-section").offset().top
+            },
+            2000);
+            UIkit.offcanvas.hide([force = false])
+    });
+
+    $(".scroll-to-regulation-section").click(function() {
+        $('html,body').animate({
+                scrollTop: $("#regulation-section").offset().top
+            },
+            2000);
+            UIkit.offcanvas.hide([force = false])
+    });
+</script>
+
+<script>
+    /**
+     * | Custom javascript scroll bar |
+     *  ------------------------------
+     * A small script that deploys a horizontal scalable scroll bar
+     * at the top of the page.
+     *  *  *  *  *  * #
+     * @author andreas johan virkus
+     * @licensed under MIT License 2015
+     *
+     * pure JavaScript version
+     **/
+
+    var bar_bg = document.getElementById("scrollbar-bg"),
+        body = document.body,
+        html = document.documentElement;
+
+    bar_bg.style.minWidth = document.width + "px";
+
+    document.getElementsByTagName("body")[0].onresize = function() {
+        // Update the gradient width
+        bar_bg.style.minWidth = document.width + "px";
+    }
+
+    window.onscroll = function() {
+        // Change the width of the progress bar
+        var bar = document.getElementById("scrollbar"),
+            dw = document.documentElement.clientWidth,
+            dh = Math.max(body.scrollHeight, body.offsetHeight,
+                html.clientHeight, html.scrollHeight, html.offsetHeight),
+            wh = window.innerHeight,
+            pos = pageYOffset || (document.documentElement.clientHeight ?
+                document.documentElement.scrollTop : document.body.scrollTop),
+            bw = ((pos / (dh - wh)) * 100);
+
+        bar.style.width = bw + "%";
+    }
+</script>
+
+<script>
+    // JS for vertical timeline
+    (function() {
+
+        'use strict';
+
+        // define variables
+        var items = document.querySelectorAll(".timeline li");
+
+        // check if an element is in viewport
+        // http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function callbackFunc() {
+            for (var i = 0; i < items.length; i++) {
+                if (isElementInViewport(items[i])) {
+                    items[i].classList.add("in-view");
+                }
+            }
+        }
+
+        // listen for events
+        window.addEventListener("load", callbackFunc);
+        window.addEventListener("resize", callbackFunc);
+        window.addEventListener("scroll", callbackFunc);
+
+    })();
+</script>
+
+<!-- C3 starts load scripts -->
+<script src="js/stackedbar.js"></script>
+<script src="js/donut.js"></script>
+<script src="scatter2.js"></script>
+
+
+<!-- script for C3 stacked bar chart transition -->
+
+<script>
+
+function loadNewChart(){
+    chart.load({
+      x: 'x',
+      columns: [
+        ['x', '3 Mbps down / 768 kbps up', '10 Mbps / 1 Mbps', '25 Mbps / 3 Mbps', '100 Mbps / 10 Mbps'],
+        ['3+ providers', 90,	79,	13,	2],
+        ['2 providers', 10,	18,	29,	10],
+        ['1 provider', 0,	3,	37,	37],
+        ['None', 0,	0,	21,	51]
+      ],
+      unload: ['2 or less', '3+'],
+      type: 'bar',
+      labels: 'true',
+      groups: [
+          ['3+ providers', '2 providers', '1 provider', 'None']
+      ]
+    });
+}
+</script>
+
+<!-- this script changes the c3 chart on scroll using SCrollMagic plugin -->
+<script>
+// init controller
+	var controller = new ScrollMagic.Controller();
+
+	// build scene
+	var scene = new ScrollMagic.Scene({triggerElement: "#trigger-c3", duration: 200})
+					.addTo(controller)
+					.on('start', function () {
+						console.log("passed trigger");
+            loadNewChart()
+            $(".annotate").hide();
+					});
+
+
+
+</script>
+
+<script>
+    var lastScrollPostion = 0
+    $('[data-uk-scrollspy]').on('inview.uk.scrollspy', function() {
+        console.log(this.id);
+        $('#slide_one_' + this.id).click();
+    });
+</script>
+<script>
+// if wider than 670 switch to Desktop index
+if (window.outerWidth < 669) {
+  document.location ="mobile-network-of-a-lifetime.html";
+};
+</script>
+
+
+
+
+
+
+
+
+</html>
